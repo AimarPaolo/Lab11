@@ -71,6 +71,15 @@ class Controller:
 
 
     def handle_search(self, e):
-        # prodotto = self._view._ddnode.value
-        # self._model.
-        pass
+        self._view.txtOut2.controls.clear()
+        prodotto = self._choiceProdotto
+        if self._choiceProdotto is None:
+            self._view.txtOut2.controls.append(ft.Text("Bisogna selezionare un prodotto!!", color="red"))
+            self._view.update_page()
+            return
+        path = self._model.getBest(prodotto)
+        self._view.txtOut2.controls.append(ft.Text(f"Numero archi percorso più lungo: {path-1}"))
+        self._view.update_page()
+
+
+
